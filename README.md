@@ -8,7 +8,7 @@ Logging the hours of certain activities. In particular the following for 2015:
 * Reading
 * Yoga
 
-The basic idea is to keep track of how many I spend on a certain activity by logging the hours. I've decided that the smallest unit will be the quarter hour. I'm going to keep a simple daily list of the above five in my Evernote so that it's easily accessible from any device. The cut-off time is going to 01:00 which is my usual bedtime and in some cases I will be doing one of the above right up until then. The totals for the day will be held in a basic text file with space separated values like so:
+The basic idea is to keep track of how many I spend on a certain activity by logging the hours. I've decided that the smallest unit will be the quarter hour. Times between the quarter hour will be rounded down which should encourage me to do those few extra minutes up to the next quarter hour. I'm going to keep a simple daily list of the above five in my Evernote so that it's easily accessible from any device. The cut-off time is going to 01:00 which is my usual bedtime and in some cases I will be doing one of the above right up until then. The totals for the day will be held in a basic text file with space separated values like so:
 
 `0 1.0 0 1.0 0.75`
 
