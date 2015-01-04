@@ -9,8 +9,13 @@ class Hours
   def initialize
     @hours = []
   end
+  def add_hours hours
+    @hours.push(hours)
+  end
 end
 
+my_hours = Hours.new
+
 File.open(ARGV[0]).each_line do |line|
-  # solution here
+  my_hours.add_hours line.split(" ")
 end
