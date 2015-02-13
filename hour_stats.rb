@@ -27,11 +27,11 @@ class Hours
     end
   end
   def print_hours
-    puts "Cycling: \t #@cycling hours"
-    puts "Entertainment: \t #@entertainment hours"
-    puts "Programming: \t #@programming hours"
-    puts "Reading: \t #@reading hours"
-    puts "Yoga: \t #@yoga hours"
+    puts "Cycling: \t #@cycling \t hours"
+    puts "Entertainment: \t #@entertainment \t hours"
+    puts "Programming: \t #@programming \t hours"
+    puts "Reading: \t #@reading \t hours"
+    puts "Yoga Practice: \t #@yoga \t hours"
   end
 end
 
