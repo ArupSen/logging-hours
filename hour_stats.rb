@@ -27,6 +27,8 @@ class Hours
     end
   end
   def print_hours
+    puts "TOTALS FOR THE YEAR"
+    puts "--------------------"
     puts "Cycling: \t #@cycling \t hours"
     puts "Entertainment: \t #@entertainment \t hours"
     puts "Programming: \t #@programming \t hours"
