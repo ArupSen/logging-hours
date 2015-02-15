@@ -8,32 +8,54 @@
 class Hours
   def initialize
     @hours = []
-    @cycling = 0
-    @entertainment = 0
-    @programming = 0
-    @reading = 0
-    @yoga = 0
+    @cycling = [0, []]
+    @entertainment = [0, []]
+    @programming = [0, []]
+    @reading = [0, []]
+    @yoga = [0, []]
+    @month_nums = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 31, 31]
+    @month = []
   end
+
   def add_hours hours
     @hours.push(hours)
   end
+
   def sum_hours
     @hours.each do |row|
-      @cycling += row[0].to_f
-      @entertainment += row[1].to_f
-      @programming += row[2].to_f
-      @reading += row[3].to_f
-      @yoga += row[4].to_f
+      @cycling[0] += row[0].to_f
+      @entertainment[0] += row[1].to_f
+      @programming[0] += row[2].to_f
+      @reading[0] += row[3].to_f
+      @yoga[0] += row[4].to_f
     end
   end
+
+  # create an array for a particular month
+  def fill_month range
+    # reset array to empty first
+    @month = []
+    range.times do |num|
+      @month.push(@hours[num])
+    end
+  end
+
   def print_hours
+    puts ""
     puts "TOTALS FOR THE YEAR"
     puts "--------------------"
-    puts "Cycling: \t #@cycling \t hours"
-    puts "Entertainment: \t #@entertainment \t hours"
-    puts "Programming: \t #@programming \t hours"
-    puts "Reading: \t #@reading \t hours"
-    puts "Yoga Practice: \t #@yoga \t hours"
+    puts "Cycling: \t #{@cycling[0]} \t hours"
+    puts "Entertainment: \t #{@entertainment[0]} \t hours"
+    puts "Programming: \t #{@programming[0]} \t hours"
+    puts "Reading: \t #{@reading[0]} \t hours"
+    puts "Yoga Practice: \t #{@yoga[0]} \t hours"
+    puts ""
+  end
+
+  def print_month
+    @month.each do |row|
+    print row
+    end
   end
 end
 
@@ -44,3 +66,5 @@ File.open(ARGV[0]).each_line do |line|
 end
 my_hours.sum_hours
 my_hours.print_hours
+my_hours.fill_month 30
+my_hours.print_month
