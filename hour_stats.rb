@@ -8,6 +8,7 @@
 class Hours
   def initialize
     @hours = []
+    # the inner array element will hold totals for each month
     @cycling = [0, []]
     @entertainment = [0, []]
     @programming = [0, []]
@@ -18,10 +19,13 @@ class Hours
     @month = []
   end
 
+  # used only to fill the @hours array for new objects
   def add_hours hours
-    @hours.push(hours)
+    @hours << hours
   end
 
+  # creates a grand total for the whole year
+  # could the method be more generic and also sum a month?
   def sum_hours
     @hours.each do |row|
       @cycling[0] += row[0].to_f
@@ -33,6 +37,7 @@ class Hours
   end
 
   # create an array for a particular month
+  # probably better to use the upto method and loop through the @day_ranges
   def fill_month range
     # reset array to empty first
     @month = []
@@ -43,16 +48,17 @@ class Hours
 
   def print_hours
     puts ""
-    puts "TOTALS FOR THE YEAR"
+    puts "TOTALS FOR THE YEAR (hours)"
     puts "--------------------"
-    puts "Cycling: \t #{@cycling[0]} \t hours"
-    puts "Entertainment: \t #{@entertainment[0]} \t hours"
-    puts "Programming: \t #{@programming[0]} \t hours"
-    puts "Reading: \t #{@reading[0]} \t hours"
-    puts "Yoga Practice: \t #{@yoga[0]} \t hours"
+    puts "Cycling: \t #{@cycling[0]}"
+    puts "Entertainment: \t #{@entertainment[0]}"
+    puts "Programming: \t #{@programming[0]}"
+    puts "Reading: \t #{@reading[0]}"
+    puts "Yoga Practice: \t #{@yoga[0]}"
     puts ""
   end
 
+  # just used to test that the @month array is being filled
   def print_month
     @month.each do |row|
     print row
