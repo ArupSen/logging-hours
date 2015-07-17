@@ -9,11 +9,12 @@ class Hours
   def initialize
     @hours = []
     # the inner array element will hold totals for each month
-    @cycling = [0, []]
-    @entertainment = [0, []]
-    @programming = [0, []]
-    @reading = [0, []]
-    @yoga = [0, []]
+    # the third element is for current average
+    @cycling = [0, [], 0]
+    @entertainment = [0, [], 0]
+    @programming = [0, [], 0]
+    @reading = [0, [], 0]
+    @yoga = [0, [], 0]
     @month_nums = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 31, 31]
     @day_ranges = [31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 335, 366]
     @month = []
@@ -46,6 +47,17 @@ class Hours
     end
   end
 
+  # calculate the average weekly hours
+  # uses Time class to get current week number
+  def current_weekly_average
+    week_number = Time.now.yday / 7
+    @cycling[2] = @cycling[0] / week_number
+    @entertainment[2] = @entertainment[0] / week_number
+    @programming[2] = @programming[0] / week_number
+    @reading[2] = @reading[0] / week_number
+    @yoga[2] = @yoga[0] / week_number
+  end
+
   def print_hours
     puts ""
     puts "TOTALS FOR THE YEAR (hours)"
@@ -55,6 +67,18 @@ class Hours
     puts "Programming: \t #{@programming[0]}"
     puts "Reading: \t #{@reading[0]}"
     puts "Yoga Practice: \t #{@yoga[0]}"
+    puts ""
+  end
+
+  def print_averages
+    puts ""
+    puts "AVERAGES FOR THE YEAR (hours)"
+    puts "--------------------"
+    puts "Cycling: \t #{@cycling[2].round(2)}"
+    puts "Entertainment: \t #{@entertainment[2].round(2)}"
+    puts "Programming: \t #{@programming[2].round(2)}"
+    puts "Reading: \t #{@reading[2].round(2)}"
+    puts "Yoga Practice: \t #{@yoga[2].round(2)}"
     puts ""
   end
 
@@ -73,5 +97,7 @@ File.open(ARGV[0]).each_line do |line|
 end
 my_hours.sum_hours
 my_hours.print_hours
-my_hours.fill_month 30
-my_hours.print_month
+my_hours.current_weekly_average
+my_hours.print_averages
+#my_hours.fill_month 30
+#my_hours.print_month
