@@ -58,9 +58,14 @@ class Hours
     @yoga[2] = @yoga[0] / week_number
   end
 
+  # get month name from month number
+  def month
+    months = %w{January February March April May June July August September October November December}
+    months[Time.now.month - 1]
+  end
   def print_hours
     puts ""
-    puts "TOTALS FOR THE YEAR (hours)"
+    puts "TOTALS FOR #{Time.now.year} (hours) #{month()}"
     puts "--------------------"
     puts "Cycling: \t #{@cycling[0]}"
     puts "Entertainment: \t #{@entertainment[0]}"
@@ -72,7 +77,7 @@ class Hours
 
   def print_averages
     puts ""
-    puts "AVERAGES FOR THE YEAR (hours)"
+    puts "AVERAGES FOR #{Time.now.year} (hours) #{month()}"
     puts "--------------------"
     puts "Cycling: \t #{@cycling[2].round(2)}"
     puts "Entertainment: \t #{@entertainment[2].round(2)}"
